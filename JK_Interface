@@ -1,0 +1,5 @@
+interface jk_if;
+    logic clk, reset;    // Clock and reset
+    logic J, K;          // Inputs J and K
+    logic Q, Qn;         // Outputs Q and Qn
+endinterface
