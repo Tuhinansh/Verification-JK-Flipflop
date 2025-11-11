@@ -1,40 +1,54 @@
-1. Understand the JK Flip-Flop Behavior
-Truth table
+🧠 JK Flip-Flop Design and Verification (SystemVerilog / Verilog)
+📘 Overview
 
-Functionality on clock edge
+This project demonstrates the design and verification of a JK Flip-Flop using Verilog HDL. The JK Flip-Flop is a fundamental sequential logic element used in digital systems for state storage and timing-based control. The project includes both the Design Under Test (DUT) and a self-contained testbench, with complete simulation and waveform analysis.
 
-Asynchronous reset (if any)
+⚙️ Functional Description
 
-2. Write Verilog Code for JK Flip-Flop (Design Under Test - DUT)
+The JK Flip-Flop operates based on clock edges and an asynchronous reset signal. Its behavior is summarized below:
+
+J	K	Next Q (on clk edge)	Description
+0	0	No change	Hold current state
+0	1	0	Reset
+1	0	1	Set
+1	1	Toggle	Inverts current state
+
+Asynchronous Reset:
+When the reset signal is high, the output Q immediately resets to 0, regardless of the clock.
+
+🧩 Design Details
+
 Inputs: J, K, clk, reset
+
 Output: Q
 
-Use always @(posedge clk or posedge reset)
+Sensitivity List: always @(posedge clk or posedge reset)
 
-3. Create Testbench File
-No ports (testbenches are self-contained)
+Implements asynchronous reset and standard JK logic behavior.
 
-Declare reg signals for inputs and wire for output
+🧪 Testbench Features
 
-Instantiate the DUT
+Self-contained (no input/output ports)
 
-Apply stimulus (various test cases for J and K combinations)
+Declares reg signals for inputs and wire for the output
 
-Use $monitor or $display for printing
+Instantiates the DUT
 
-Include a clock generation block
+Includes clock generation block
 
-4. Simulate the Design
-Use EDA Tool like ModelSim, Vivado, or Xilinx ISE
+Applies multiple test scenarios to verify all JK input combinations
 
-Compile both DUT and testbench
+Uses $monitor / $display for real-time signal observation
 
-Run the simulation
+🧭 Simulation Workflow
 
-View output using waveform viewer
+Compile both DUT and testbench in an HDL simulator (e.g., ModelSim, Vivado, or Xilinx ISE)
 
-5. Analyze the Waveform
-Check behavior for:
+Run simulation to observe flip-flop behavior
+
+View waveform using the simulation viewer
+
+Verify behavior for all input combinations:
 
 J=0, K=0 → Hold
 
@@ -44,16 +58,22 @@ J=1, K=0 → Set
 
 J=1, K=1 → Toggle
 
-Reset condition
+Verify asynchronous reset
 
-6. Debug if Needed
-Check signal transitions
+🛠️ Debugging and Analysis
 
-Correct any bugs in logic or timing
+Checked timing of state transitions
 
-7. Document Your Findings
-Include simulation screenshots
+Validated correct toggling and reset responses
 
-Mention test scenarios and outputs
+Fixed any race or sensitivity issues
 
-Note observations or issues fixed
+Confirmed waveform matches expected logical behavior
+
+📊 Results and Documentation
+
+Simulation results and waveform screenshots included
+
+Documented all test scenarios, expected outputs, and observed results
+
+Notes on issues resolved and timing corrections
